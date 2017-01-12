@@ -1,0 +1,5 @@
+{
+  "serverPort": 80,
+  "parseServerApplicationId": "uxa-dev",
+  "parseServerURL": "https://uxa-server-dev.herokuapp.com/parse"
+}

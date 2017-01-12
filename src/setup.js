@@ -1,0 +1,67 @@
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import Parse from 'parse/react-native';
+
+import sagas from './sagas';
+import '@i18n/I18n';
+import AppNavigator from './AppNavigator';
+import configureStore from './configureStore';
+import Settings from './settings';
+
+const settings = Settings.load();
+
+Parse.initialize(settings.parseServerApplicationId);
+Parse.serverURL = settings.parseServerURL;
+
+const store = configureStore();
+sagas.forEach(saga => store.runSaga(saga));
+
+function setup() {
+  class Root extends Component {
+
+    render() {
+      return (
+        <Provider store={store}>
+          <AppNavigator />
+        </Provider>
+      );
+    }
+  }
+
+  return Root;
+}
+
+export default setup;
+/*import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import Parse from 'parse/react-native';
+import '@i18n/I18n';
+import configureStore from './store';
+import sagas from './sagas';
+import AppNavigator from './AppNavigator';
+import Settings from './settings';
+
+const settings = Settings.load();
+
+Parse.initialize(settings.parseServerApplicationId);
+Parse.serverURL = settings.parseServerURL;
+
+const store = configureStore();
+sagas.forEach(saga => store.runSaga(saga));
+
+function setup() {
+  class Root extends Component {
+    render() {
+      return (
+        <Provider store={store}>
+          <AppNavigator store={store} />
+        </Provider>
+      );
+    }
+  }
+
+  return Root;
+}
+
+module.exports = setup;
+*/
