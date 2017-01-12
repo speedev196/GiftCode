@@ -1029,7 +1029,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rdt.giftcode;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rdt.giftcodedev;
 				PRODUCT_NAME = GiftCode;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1050,7 +1050,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rdt.giftcode;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rdt.giftcodedev;
 				PRODUCT_NAME = GiftCode;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
