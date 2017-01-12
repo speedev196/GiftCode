@@ -1,6 +1,0 @@
-{
-  "serverPort": 8000,
-  "parseServerApplicationId": "uxa-dev",
-  "parseServerURL": "http://localhost:8000/parse",
-  "graphqlURL": "http://localhost:8000/graphql"
-}
