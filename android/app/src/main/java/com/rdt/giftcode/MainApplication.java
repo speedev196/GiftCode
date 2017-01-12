@@ -10,6 +10,7 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
@@ -27,8 +28,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new ImagePickerPackage(),
-            new ReactNativeI18n()
+          new ImagePickerPackage(),
+          new ReactNativeI18n(),
+          new RCTCameraPackage()
       );
     }
   };

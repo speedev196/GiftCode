@@ -7,12 +7,24 @@ import { Button } from 'react-native-elements';
 import I18n from 'react-native-i18n';
 import NavigationBar from 'react-native-navbar';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Camera from 'react-native-camera';
+
 
 import { popRoute, pushNewRoute } from '@actions/route';
 import { Styles, Fonts, Images, Colors, Metrics } from '@theme/';
 import styles from './styles';
 
 class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.camera = null;
+
+    this.state = {
+      camera: {
+        captureQuality: Camera.constants.CaptureQuality.low,
+      },
+    };
+  }
   componentDidMount() {
   }
   popRoute() {
@@ -21,27 +33,23 @@ class Search extends Component {
   pushNewRoute(route) {
     this.props.pushNewRoute(route);
   }
-
+  scanBarcode(data) {
+    alert('d');
+  }
   render() {
-    const navBtnBack = (
-      <TouchableOpacity onPress={() => this.popRoute()}>
-        <Icon name="angle-left" size={40} color={Colors.textPrimary} />
-      </TouchableOpacity>
-    );
     return (
-      <View
-        style={[Styles.fullScreen, { backgroundColor: 'white' }]}
-      >
-        <NavigationBar
-          style={{ marginLeft: 10, alignItems: 'center' }}
-          containerStyle={Styles.center}
-          title={{ title: I18n.t('SEARCH'), tintColor: Colors.textPrimary }}
-          leftButton={navBtnBack}
-          tintColor={Colors.brandPrimary}
+      <View style={styles.container}>
+        <Camera
+          ref={(cam) => {
+            this.camera = cam;
+          }}
+          style={styles.preview}
+          onBarCodeRead={code => this.scanBarcode(code)}
+          aspect={Camera.constants.Aspect.fill}
+          barCodeTypes={[
+            'qr',
+          ]}
         />
-        <View style={{ flex: 1 }}>
-
-        </View>
       </View>
     );
   }
